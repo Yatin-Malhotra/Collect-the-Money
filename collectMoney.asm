@@ -51,19 +51,48 @@ main:
 input:
     lw $t5, 4($t9)
     beq $t5, 0x61, move_left    # if input is 'a', move left
-    beq $t5, 0x77, climb_up     # if input is 'w', move up
+    beq $t5, 0x77, top_check     # if input is 'w', move up
     beq $t5, 0x73, climb_down   # if input is 's', move down
     beq $t5, 0x64, move_right   # if input is 'd', move right
     beq $t5, 0x71, exit         # if input is 'p', restart the game (currently exiting)
 
-    j main                      # jump to main 
+    j main                      # jump to main 	
+
+top_check:
+    li $t2, BASE_ADDRESS	# Set $t2 to the BASE_ADDRESS
+    move $a0, $t0
+    addi $t0, $t0, -256         # Update the value of $t0 (moving left means -256 pixels)
+    
+    ble $t2, $t0, climb_up
+    bgt $t2, $t0, reset_top_val
+
+reset_top_val:
+    addi $t0, $t0, 256
+    
+    jal character
+    
+    j main
+
+bottom_check:
+    li $t2, BASE_ADDRESS
+    addi $t2, $t2, 16380
+    move $a0, $t0
+    addi $t0, $t0, 256
+    
+    ble $t2, $t0, climb_down
+    bgt $t2, $t0, reset_bottom_val
+
+reset_bottom_val:
+    addi $t0, $t0, -256
+    
+    jal character
+    
+    j main
 
 move_left:
     move $a0, $t0               # Set $a0 to the current position
     addi $t0, $t0, -4           # Update the value of $t0 (moving left means -4 pixels)
     move $a1, $t0               # Set $a1 to $t0 (the new position)
-
-    # Check to make sure that the person doesn't go out of the bounds
 
     jal character
 
@@ -79,8 +108,6 @@ move_right:
     j main
 
 climb_up:
-    move $a0, $t0               # Set $a0 to the current position
-    addi $t0, $t0, -256         # Update the value of $t0 (moving left means -256 pixels)
     move $a1, $t0               # Set $a1 to $t0 (the new position)
 
     jal character
