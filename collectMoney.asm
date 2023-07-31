@@ -75,9 +75,10 @@ reset_top_val:
 
 bottom_check:
     li $t2, BASE_ADDRESS
-    addi $t2, $t2, 16380
     move $a0, $t0
     addi $t0, $t0, 256
+    
+    addi $t2, $t2, 16380 # Set $t2 to the bottom right pixel
     
     ble $t2, $t0, climb_down
     bgt $t2, $t0, reset_bottom_val
