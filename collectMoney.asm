@@ -12,14 +12,15 @@
 #
 # Which milestones have been reached in this submission?
 # (See the assignment handout for descriptions of the milestones) 
-# - Milestone 1 and 2
+# - Milestone 3
 #
 # Which approved features have been implemented for milestone 3?
 # (See the assignment handout for the list of additional features) 
-# 1. (fill in the feature, if any)
-# 2. (fill in the feature, if any)
-# 3. (fill in the feature, if any)
-# ... (add more if necessary)
+# 1. Health/Score (2 marks)
+# 2. Fail condition (1 mark)
+# 3. Win condition (1 mark)
+# 4. Different levels (2 marks)
+# 5. Start menu (1 mark)
 #
 # Link to video demonstration for final submission:
 # - (insert YouTube / MyMedia / other URL here). Make sure we can view it! 
