@@ -269,11 +269,11 @@ reset:
 
 
 update_header_coins:
-	#beq $s4, 0, write_zero
-	#beq $s4, 1, write_one
-	#beq $s4, 2, write_two
-	#beq $s4, 3, write_three
-	#beq $s4, 4, write_four
-	#beq $s4, 5, write_five
-	#beq $s4, 6, write_six
+	# beq $s4, 0, write_zero
+	# beq $s4, 1, write_one
+	# beq $s4, 2, write_two
+	# beq $s4, 3, write_three
+	# beq $s4, 4, write_four
+	# beq $s4, 5, write_five
+	# beq $s4, 6, write_six
 	
