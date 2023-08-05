@@ -102,7 +102,7 @@ right_motion:
 	beq $t7, SPIKES, exit
 	
 	lw $t8, 5936($s0)
-	beq $t8, KEY, exit
+	beq $t8, KEY, update_header_key
 	
 	lw $t7, 6448($s0)
 	beq $t7, BACKGROUND_BLUE, input_checker
@@ -153,7 +153,7 @@ left_motion:
 	beq $t7, SPIKES, exit
 	
 	lw $t8, 5928($s0)
-	beq $t8, KEY, exit
+	beq $t8, KEY, update_header_key
 	
 	lw $t7, 6440($s0)
 	beq $t7, BACKGROUND_BLUE, input_checker
@@ -280,7 +280,28 @@ update_header_coins:
 	beq $s4, 6, write_six
 	
 	jr $ra
+
+update_header_key:
+	li $t0, BASE_ADDRESS
+	li $t1, HEADER
+	li $t2, KEY
 	
+	sw $t1, 980($t0)
+	sw $t1, 984($t0)
+	sw $t1, 988($t0)
+	sw $t1, 992($t0)
+	sw $t1, 1236($t0)
+	sw $t1, 1244($t0)
+	sw $t1, 1248($t0)
+	sw $t2, 1496($t0)
+	sw $t2, 1500($t0)
+	sw $t2, 1508($t0)
+	sw $t2, 1756($t0)
+	sw $t1, 1760($t0)
+	sw $t1, 2016($t0)
+	
+	j exit
+
 write_zero:
 	li $t0, BASE_ADDRESS
 	li $t1, HEADER
@@ -324,47 +345,47 @@ write_one:
 	li $t2, LABEL
 	
 	# Top row
-	sw $t1, 1128($t0)
-	sw $t1, 1132($t0)
-	sw $t2, 1136($t0)
-	sw $t1, 1140($t0)
+	sw $t1, 868($t0)
+	sw $t1, 872($t0)
+	sw $t2, 876($t0)
+	sw $t1, 880($t0)
 	
 	# Second Row
-	sw $t1, 1384($t0)
-	sw $t1, 1388($t0)
-	sw $t2, 1392($t0)
-	sw $t1, 1396($t0)
+	sw $t1, 1124($t0)
+	sw $t1, 1128($t0)
+	sw $t2, 1132($t0)
+	sw $t1, 1136($t0)
 	
 	# Third Row
-	sw $t1, 1640($t0)
-	sw $t1, 1644($t0)
-	sw $t2, 1648($t0)
-	sw $t1, 1652($t0)
+	sw $t1, 1380($t0)
+	sw $t1, 1384($t0)
+	sw $t2, 1388($t0)
+	sw $t1, 1392($t0)
 	
 	# Fourth Row
-	sw $t1, 1896($t0)
-	sw $t1, 1900($t0)
-	sw $t2, 1904($t0)
-	sw $t1, 1908($t0)
+	sw $t1, 1636($t0)
+	sw $t1, 1640($t0)
+	sw $t2, 1644($t0)
+	sw $t1, 1648($t0)
 	
 	# Fifth Row
-	sw $t1, 2152($t0)
-	sw $t1, 2156($t0)
-	sw $t2, 2160($t0)
-	sw $t1, 2164($t0)
+	sw $t1, 1892($t0)
+	sw $t1, 1896($t0)
+	sw $t2, 1900($t0)
+	sw $t1, 1904($t0)
 	
 	jr $ra
-	
+
 write_two:
 	li $t0, BASE_ADDRESS
 	li $t1, HEADER
 	li $t2, LABEL
 	
 	# Top row
-	sw $t2, 864($t0)
 	sw $t2, 868($t0)
 	sw $t2, 872($t0)
 	sw $t2, 876($t0)
+	sw $t2, 880($t0)
 	
 	# Second Row
 	sw $t1, 1124($t0)
@@ -398,34 +419,34 @@ write_three:
 	li $t2, LABEL
 	
 	# Top row
-	sw $t2, 1128($t0)
-	sw $t2, 1132($t0)
-	sw $t2, 1136($t0)
-	sw $t2, 1140($t0)
+	sw $t2, 868($t0)
+	sw $t2, 872($t0)
+	sw $t2, 876($t0)
+	sw $t2, 880($t0)
 	
 	# Second Row
-	sw $t1, 1384($t0)
-	sw $t1, 1388($t0)
-	sw $t1, 1392($t0)
-	sw $t2, 1396($t0)
+	sw $t1, 1124($t0)
+	sw $t1, 1128($t0)
+	sw $t1, 1132($t0)
+	sw $t2, 1136($t0)
 	
 	# Third Row
-	sw $t2, 1640($t0)
-	sw $t2, 1644($t0)
-	sw $t2, 1648($t0)
-	sw $t2, 1652($t0)
+	sw $t2, 1380($t0)
+	sw $t2, 1384($t0)
+	sw $t2, 1388($t0)
+	sw $t2, 1392($t0)
 	
 	# Fourth Row
-	sw $t1, 1896($t0)
-	sw $t1, 1900($t0)
-	sw $t1, 1904($t0)
-	sw $t2, 1908($t0)
+	sw $t1, 1636($t0)
+	sw $t1, 1640($t0)
+	sw $t1, 1644($t0)
+	sw $t2, 1648($t0)
 	
 	# Fifth Row
-	sw $t2, 2152($t0)
-	sw $t2, 2156($t0)
-	sw $t2, 2160($t0)
-	sw $t2, 2164($t0)
+	sw $t2, 1892($t0)
+	sw $t2, 1896($t0)
+	sw $t2, 1900($t0)
+	sw $t2, 1904($t0)
 	
 	jr $ra
 	
@@ -435,34 +456,34 @@ write_four:
 	li $t2, LABEL
 	
 	# Top row
-	sw $t2, 1128($t0)
-	sw $t1, 1132($t0)
-	sw $t1, 1136($t0)
-	sw $t2, 1140($t0)
+	sw $t2, 868($t0)
+	sw $t1, 872($t0)
+	sw $t1, 876($t0)
+	sw $t2, 880($t0)
 	
 	# Second Row
-	sw $t2, 1384($t0)
-	sw $t1, 1388($t0)
-	sw $t1, 1392($t0)
-	sw $t2, 1396($t0)
+	sw $t2, 1124($t0)
+	sw $t1, 1128($t0)
+	sw $t1, 1132($t0)
+	sw $t2, 1136($t0)
 	
 	# Third Row
-	sw $t2, 1640($t0)
-	sw $t2, 1644($t0)
-	sw $t2, 1648($t0)
-	sw $t2, 1652($t0)
+	sw $t2, 1380($t0)
+	sw $t2, 1384($t0)
+	sw $t2, 1388($t0)
+	sw $t2, 1392($t0)
 	
 	# Fourth Row
-	sw $t1, 1896($t0)
-	sw $t1, 1900($t0)
-	sw $t1, 1904($t0)
-	sw $t2, 1908($t0)
+	sw $t1, 1636($t0)
+	sw $t1, 1640($t0)
+	sw $t1, 1644($t0)
+	sw $t2, 1648($t0)
 	
 	# Fifth Row
-	sw $t1, 2152($t0)
-	sw $t1, 2156($t0)
-	sw $t1, 2160($t0)
-	sw $t2, 2164($t0)
+	sw $t1, 1892($t0)
+	sw $t1, 1896($t0)
+	sw $t1, 1900($t0)
+	sw $t2, 1904($t0)
 	
 	jr $ra
 	
@@ -472,34 +493,34 @@ write_five:
 	li $t2, LABEL
 	
 	# Top row
-	sw $t2, 1128($t0)
-	sw $t2, 1132($t0)
-	sw $t2, 1136($t0)
-	sw $t2, 1140($t0)
+	sw $t2, 868($t0)
+	sw $t2, 872($t0)
+	sw $t2, 876($t0)
+	sw $t2, 880($t0)
 	
 	# Second Row
-	sw $t2, 1384($t0)
-	sw $t1, 1388($t0)
-	sw $t1, 1392($t0)
-	sw $t1, 1396($t0)
+	sw $t2, 1124($t0)
+	sw $t1, 1128($t0)
+	sw $t1, 1132($t0)
+	sw $t1, 1136($t0)
 	
 	# Third Row
-	sw $t2, 1640($t0)
-	sw $t2, 1644($t0)
-	sw $t2, 1648($t0)
-	sw $t2, 1652($t0)
+	sw $t2, 1380($t0)
+	sw $t2, 1384($t0)
+	sw $t2, 1388($t0)
+	sw $t2, 1392($t0)
 	
 	# Fourth Row
-	sw $t1, 1896($t0)
-	sw $t1, 1900($t0)
-	sw $t1, 1904($t0)
-	sw $t2, 1908($t0)
+	sw $t1, 1636($t0)
+	sw $t1, 1640($t0)
+	sw $t1, 1644($t0)
+	sw $t2, 1648($t0)
 	
 	# Fifth Row
-	sw $t2, 2152($t0)
-	sw $t2, 2156($t0)
-	sw $t2, 2160($t0)
-	sw $t2, 2164($t0)
+	sw $t2, 1892($t0)
+	sw $t2, 1896($t0)
+	sw $t2, 1900($t0)
+	sw $t2, 1904($t0)
 	
 	jr $ra
 	
@@ -509,33 +530,34 @@ write_six:
 	li $t2, LABEL
 	
 	# Top row
-	sw $t2, 1128($t0)
-	sw $t2, 1132($t0)
-	sw $t2, 1136($t0)
-	sw $t2, 1140($t0)
+	sw $t2, 868($t0)
+	sw $t2, 872($t0)
+	sw $t2, 876($t0)
+	sw $t2, 880($t0)
 	
 	# Second Row
-	sw $t2, 1384($t0)
-	sw $t1, 1388($t0)
-	sw $t1, 1392($t0)
-	sw $t1, 1396($t0)
+	sw $t2, 1124($t0)
+	sw $t1, 1128($t0)
+	sw $t1, 1132($t0)
+	sw $t1, 1136($t0)
 	
 	# Third Row
-	sw $t2, 1640($t0)
-	sw $t2, 1644($t0)
-	sw $t2, 1648($t0)
-	sw $t2, 1652($t0)
+	sw $t2, 1380($t0)
+	sw $t2, 1384($t0)
+	sw $t2, 1388($t0)
+	sw $t2, 1392($t0)
 	
 	# Fourth Row
-	sw $t2, 1896($t0)
-	sw $t1, 1900($t0)
-	sw $t1, 1904($t0)
-	sw $t2, 1908($t0)
+	sw $t2, 1636($t0)
+	sw $t1, 1640($t0)
+	sw $t1, 1644($t0)
+	sw $t2, 1648($t0)
 	
 	# Fifth Row
-	sw $t2, 2152($t0)
-	sw $t2, 2156($t0)
-	sw $t2, 2160($t0)
-	sw $t2, 2164($t0)
+	sw $t2, 1892($t0)
+	sw $t2, 1896($t0)
+	sw $t2, 1900($t0)
+	sw $t2, 1904($t0)
 	
 	jr $ra
+
