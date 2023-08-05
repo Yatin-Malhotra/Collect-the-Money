@@ -1,0 +1,44 @@
+
+Set the background color - Done!
+Set the layout - 
+    Create the header (with the cash collected and the key thing)
+    Create the platforms
+    Create the stairs
+Create the character
+
+^^^^^^^^^^^^^^^^^ DONE ^^^^^^^^^^^^^^^^^^^^^^
+
+Input and movement then
+
+if 'a':
+    check the color of the current pixel
+        if it is gray, then don't move
+    check the color of the new pixel
+        if the color is red, then end game
+        if that pixel is yellow, increase the cash in the header
+        if the pixel is pink, end the level and go to next level
+        else, just mark the move
+
+if 'd':
+    check the color of the current pixel
+        if it is gray, then don't move
+    check the color of the new pixel
+        if the color is red, then end game
+        if that pixel is yellow, increase the cash in the header
+        if the pixel is pink, end the level and go to next level
+        else, just mark the move
+
+if 'w':
+    check the color of the current pixel
+        if the color is not gray, then don't move
+    check the color of the new pixel
+        if the color is gray, then move
+        else, don't 
+
+if 's':
+    check the color of the current pixel
+        if the color is not gray, then don't move
+    check the color of the new pixel
+        if the color is gray, then move
+        else, don't 
+
