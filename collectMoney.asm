@@ -600,24 +600,45 @@ write_six:
 
 set_0:
 	li $t3, 0
+	li $t4, 1
+	jal set_coin_0_next
+	j input_checker_level_gap
 
 set_1:
 	li $t3, 1
+	li $t4, 1
+	jal set_coin_1_next
+	j input_checker_level_gap
 
 set_2:
 	li $t3, 2
+	li $t4, 1
+	jal set_coin_2_next
+	j input_checker_level_gap
 
 set_3:
 	li $t3, 3
+	li $t4, 1
+	jal set_coin_3_next
+	j input_checker_level_gap
 	
 set_4:
 	li $t3, 4
+	li $t4, 1
+	jal set_coin_4_next
+	j input_checker_level_gap
 
 set_5:
 	li $t3, 5
+	li $t4, 1
+	jal set_coin_5_next
+	j input_checker_level_gap
 	
 set_6:
 	li $t3, 6
+	li $t4, 1
+	jal set_coin_6_next
+	j input_checker_level_gap
 	
 set_coin_0_next:
 	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
@@ -800,4 +821,46 @@ set_coin_6_exit:
 	j set_coin_6_exit_loop
 	end_coin_6_exit_loop:
 	jr $ra
-	
+
+input_checker_level_gap:
+	li $s7, 0xffff0000
+    	lw $s6, 0($s7)
+    	beq $s6, 1, input_detected_gap  # if any input, go to the input function
+    	j input_checker_level_gap       # else go keep checking for any input
+
+input_detected_gap:
+	lw $t9, 4($s7)
+    	beq $t9, 0x77, go_up		# if input is 'w', move up
+    	beq $t9, 0x73, go_down		# if input is 's', move down
+		beq $t9, 0x0A, do_task
+    	beq $t9, 0x70, main			# if input is 'p', restart the game
+
+	j input_checker_level_gap
+
+go_up:
+	li $t4, 1
+	beq $s4, 0, set_coin_0_next
+	beq $s4, 1, set_coin_1_next
+	beq $s4, 2, set_coin_2_next
+	beq $s4, 3, set_coin_3_next
+	beq $s4, 4, set_coin_4_next
+	beq $s4, 5, set_coin_5_next
+	beq $s4, 6, set_coin_6_next
+
+	j input_checker_level_gap
+
+go_down:
+	li $t4, 2
+	beq $s4, 0, set_coin_0_exit
+	beq $s4, 1, set_coin_1_exit
+	beq $s4, 2, set_coin_2_exit
+	beq $s4, 3, set_coin_3_exit
+	beq $s4, 4, set_coin_4_exit
+	beq $s4, 5, set_coin_5_exit
+	beq $s4, 6, set_coin_6_exit
+
+	j input_checker_level_gap
+
+do_task:
+	beq $t4, 2, exit
+	beq $t4, 1, reset
