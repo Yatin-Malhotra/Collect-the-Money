@@ -104,10 +104,8 @@ right_motion:
 	lw $t8, 5936($s0)
 	beq $t8, KEY, exit
 	
-	
 	lw $t7, 6448($s0)
 	beq $t7, BACKGROUND_BLUE, input_checker
-	
 	
 	sw $t3, 0($t0)
 	sw $t4, 256($t0)
@@ -140,8 +138,11 @@ unset_coins_right:
 	sw $s5, 264($t8)
 
 	addi $s0, $s0, 4
+	addi $s4, $s4, 1
 	
 	jal character
+
+	jal update_header_coins
 	
 	j input_checker
 
@@ -194,7 +195,7 @@ unset_coins_left:
 	
 	jal character
 	
-	#jal update_header
+	jal update_header_coins
 	
 	j input_checker
 
@@ -270,11 +271,271 @@ reset:
 
 
 update_header_coins:
-	# beq $s4, 0, write_zero
-	# beq $s4, 1, write_one
-	# beq $s4, 2, write_two
-	# beq $s4, 3, write_three
-	# beq $s4, 4, write_four
-	# beq $s4, 5, write_five
-	# beq $s4, 6, write_six
+	beq $s4, 0, write_zero
+	beq $s4, 1, write_one
+	beq $s4, 2, write_two
+	beq $s4, 3, write_three
+	beq $s4, 4, write_four
+	beq $s4, 5, write_five
+	beq $s4, 6, write_six
 	
+	jr $ra
+	
+write_zero:
+	li $t0, BASE_ADDRESS
+	li $t1, HEADER
+	li $t2, LABEL
+	
+	# Top row
+	sw $t2, 868($t0)
+	sw $t2, 872($t0)
+	sw $t2, 876($t0)
+	sw $t2, 880($t0)
+	
+	# Second Row
+	sw $t2, 1128($t0)
+	sw $t1, 1132($t0)
+	sw $t1, 1136($t0)
+	sw $t2, 1140($t0)
+	
+	# Third Row
+	sw $t2, 1384($t0)
+	sw $t1, 1388($t0)
+	sw $t1, 1392($t0)
+	sw $t2, 1396($t0)
+	
+	# Fourth Row
+	sw $t2, 1640($t0)
+	sw $t1, 1644($t0)
+	sw $t1, 1648($t0)
+	sw $t2, 1652($t0)
+	
+	# Fifth Row
+	sw $t2, 1896($t0)
+	sw $t2, 1900($t0)
+	sw $t2, 1904($t0)
+	sw $t2, 1908($t0)
+	
+	jr $ra
+	
+write_one:
+	li $t0, BASE_ADDRESS
+	li $t1, HEADER
+	li $t2, LABEL
+	
+	# Top row
+	sw $t1, 1128($t0)
+	sw $t1, 1132($t0)
+	sw $t2, 1136($t0)
+	sw $t1, 1140($t0)
+	
+	# Second Row
+	sw $t1, 1384($t0)
+	sw $t1, 1388($t0)
+	sw $t2, 1392($t0)
+	sw $t1, 1396($t0)
+	
+	# Third Row
+	sw $t1, 1640($t0)
+	sw $t1, 1644($t0)
+	sw $t2, 1648($t0)
+	sw $t1, 1652($t0)
+	
+	# Fourth Row
+	sw $t1, 1896($t0)
+	sw $t1, 1900($t0)
+	sw $t2, 1904($t0)
+	sw $t1, 1908($t0)
+	
+	# Fifth Row
+	sw $t1, 2152($t0)
+	sw $t1, 2156($t0)
+	sw $t2, 2160($t0)
+	sw $t1, 2164($t0)
+	
+	jr $ra
+	
+write_two:
+	li $t0, BASE_ADDRESS
+	li $t1, HEADER
+	li $t2, LABEL
+	
+	# Top row
+	sw $t2, 864($t0)
+	sw $t2, 868($t0)
+	sw $t2, 872($t0)
+	sw $t2, 876($t0)
+	
+	# Second Row
+	sw $t1, 1124($t0)
+	sw $t1, 1128($t0)
+	sw $t1, 1132($t0)
+	sw $t2, 1136($t0)
+	
+	# Third Row
+	sw $t2, 1380($t0)
+	sw $t2, 1384($t0)
+	sw $t2, 1388($t0)
+	sw $t2, 1392($t0)
+	
+	# Fourth Row
+	sw $t2, 1636($t0)
+	sw $t1, 1640($t0)
+	sw $t1, 1644($t0)
+	sw $t1, 1648($t0)
+	
+	# Fifth Row
+	sw $t2, 1892($t0)
+	sw $t2, 1896($t0)
+	sw $t2, 1900($t0)
+	sw $t2, 1904($t0)
+	
+	jr $ra
+	
+write_three:
+	li $t0, BASE_ADDRESS
+	li $t1, HEADER
+	li $t2, LABEL
+	
+	# Top row
+	sw $t2, 1128($t0)
+	sw $t2, 1132($t0)
+	sw $t2, 1136($t0)
+	sw $t2, 1140($t0)
+	
+	# Second Row
+	sw $t1, 1384($t0)
+	sw $t1, 1388($t0)
+	sw $t1, 1392($t0)
+	sw $t2, 1396($t0)
+	
+	# Third Row
+	sw $t2, 1640($t0)
+	sw $t2, 1644($t0)
+	sw $t2, 1648($t0)
+	sw $t2, 1652($t0)
+	
+	# Fourth Row
+	sw $t1, 1896($t0)
+	sw $t1, 1900($t0)
+	sw $t1, 1904($t0)
+	sw $t2, 1908($t0)
+	
+	# Fifth Row
+	sw $t2, 2152($t0)
+	sw $t2, 2156($t0)
+	sw $t2, 2160($t0)
+	sw $t2, 2164($t0)
+	
+	jr $ra
+	
+write_four:
+	li $t0, BASE_ADDRESS
+	li $t1, HEADER
+	li $t2, LABEL
+	
+	# Top row
+	sw $t2, 1128($t0)
+	sw $t1, 1132($t0)
+	sw $t1, 1136($t0)
+	sw $t2, 1140($t0)
+	
+	# Second Row
+	sw $t2, 1384($t0)
+	sw $t1, 1388($t0)
+	sw $t1, 1392($t0)
+	sw $t2, 1396($t0)
+	
+	# Third Row
+	sw $t2, 1640($t0)
+	sw $t2, 1644($t0)
+	sw $t2, 1648($t0)
+	sw $t2, 1652($t0)
+	
+	# Fourth Row
+	sw $t1, 1896($t0)
+	sw $t1, 1900($t0)
+	sw $t1, 1904($t0)
+	sw $t2, 1908($t0)
+	
+	# Fifth Row
+	sw $t1, 2152($t0)
+	sw $t1, 2156($t0)
+	sw $t1, 2160($t0)
+	sw $t2, 2164($t0)
+	
+	jr $ra
+	
+write_five:
+	li $t0, BASE_ADDRESS
+	li $t1, HEADER
+	li $t2, LABEL
+	
+	# Top row
+	sw $t2, 1128($t0)
+	sw $t2, 1132($t0)
+	sw $t2, 1136($t0)
+	sw $t2, 1140($t0)
+	
+	# Second Row
+	sw $t2, 1384($t0)
+	sw $t1, 1388($t0)
+	sw $t1, 1392($t0)
+	sw $t1, 1396($t0)
+	
+	# Third Row
+	sw $t2, 1640($t0)
+	sw $t2, 1644($t0)
+	sw $t2, 1648($t0)
+	sw $t2, 1652($t0)
+	
+	# Fourth Row
+	sw $t1, 1896($t0)
+	sw $t1, 1900($t0)
+	sw $t1, 1904($t0)
+	sw $t2, 1908($t0)
+	
+	# Fifth Row
+	sw $t2, 2152($t0)
+	sw $t2, 2156($t0)
+	sw $t2, 2160($t0)
+	sw $t2, 2164($t0)
+	
+	jr $ra
+	
+write_six:
+	li $t0, BASE_ADDRESS
+	li $t1, HEADER
+	li $t2, LABEL
+	
+	# Top row
+	sw $t2, 1128($t0)
+	sw $t2, 1132($t0)
+	sw $t2, 1136($t0)
+	sw $t2, 1140($t0)
+	
+	# Second Row
+	sw $t2, 1384($t0)
+	sw $t1, 1388($t0)
+	sw $t1, 1392($t0)
+	sw $t1, 1396($t0)
+	
+	# Third Row
+	sw $t2, 1640($t0)
+	sw $t2, 1644($t0)
+	sw $t2, 1648($t0)
+	sw $t2, 1652($t0)
+	
+	# Fourth Row
+	sw $t2, 1896($t0)
+	sw $t1, 1900($t0)
+	sw $t1, 1904($t0)
+	sw $t2, 1908($t0)
+	
+	# Fifth Row
+	sw $t2, 2152($t0)
+	sw $t2, 2156($t0)
+	sw $t2, 2160($t0)
+	sw $t2, 2164($t0)
+	
+	jr $ra
