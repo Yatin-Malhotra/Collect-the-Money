@@ -328,6 +328,8 @@ update_header_key:
 	sw $t2, 1756($t0)
 	sw $t1, 1760($t0)
 	sw $t1, 2016($t0)
+
+	li $s0, BASE_ADDRESS
 	
 	beq $s4, 0, set_0
 	beq $s4, 1, set_1
@@ -618,31 +620,184 @@ set_6:
 	li $t3, 6
 	
 set_coin_0_next:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, next_level_no_coins			# set $t1 to next_level_no_coins
+	set_coin_0_next_loop:
+	bge $t0, $s1, end_coin_0_next_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_0_next_loop
+	end_coin_0_next_loop:
+	jr $ra
 
 set_coin_0_exit:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, exit_no_coins				# set $t1 to next_level_no_coins
+	set_coin_0_exit_loop:
+	bge $t0, $s1, exit_coin_0_exit_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j exit_level_no_coins
+	exit_coin_0_exit_loop:
+	jr $ra
 
 set_coin_1_next:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, next_level_1_coin			# set $t1 to next_level_no_coins
+	set_coin_1_next_loop:
+	bge $t0, $s1, end_coin_1_next_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_1_next_loop
+	end_coin_1_next_loop:
+	jr $ra
 
 set_coin_1_exit:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, exit_1_coin				# set $t1 to next_level_no_coins
+	set_coin_1_exit_loop:
+	bge $t0, $s1, end_coin_1_exit_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_1_exit_loop
+	end_coin_1_exit_loop:
+	jr $ra
 
 set_coin_2_next:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, next_level_2_coins			# set $t1 to next_level_no_coins
+	set_coin_2_next_loop:
+	bge $t0, $s1, end_coin_2_next_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_2_next_loop
+	end_coin_2_next_loop:
+	jr $ra
 
 set_coin_2_exit:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, exit_2_coins			# set $t1 to next_level_no_coins
+	set_coin_2_exit_loop:
+	bge $t0, $s1, end_coin_2_exit_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_2_exit_loop
+	end_coin_2_exit_loop:
+	jr $ra
 
 set_coin_3_next:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, next_level_3_coins			# set $t1 to next_level_no_coins
+	set_coin_3_next_loop:
+	bge $t0, $s1, end_coin_3_next_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_3_next_loop
+	end_coin_3_next_loop:
+	jr $ra
 
 set_coin_3_exit:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, exit_3_coins			# set $t1 to next_level_no_coins
+	set_coin_3_exit_loop:
+	bge $t0, $s1, end_coin_3_exit_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_3_exit_loop
+	end_coin_3_exit_loop:
+	jr $ra
 
 set_coin_4_next:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, next_level_4_coins			# set $t1 to next_level_no_coins
+	set_coin_4_next_loop:
+	bge $t0, $s1, end_coin_4_next_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_4_next_loop
+	end_coin_4_next_loop:
+	jr $ra
 
 set_coin_4_exit:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, exit_4_coins			# set $t1 to next_level_no_coins
+	set_coin_4_exit_loop:
+	bge $t0, $s1, end_coin_4_exit_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_4_exit_loop
+	end_coin_4_exit_loop:
+	jr $ra
 
 set_coin_5_next:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, next_level_5_coins			# set $t1 to next_level_no_coins
+	set_coin_5_next_loop:
+	bge $t0, $s1, end_coin_5_next_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_5_next_loop
+	end_coin_5_next_loop:
+	jr $ra
 
 set_coin_5_exit:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, exit_5_coins			# set $t1 to next_level_no_coins
+	set_coin_5_exit_loop:
+	bge $t0, $s1, end_coin_5_exit_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_5_exit_loop
+	end_coin_5_exit_loop:
+	jr $ra
 
 set_coin_6_next:
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, next_level_6_coins			# set $t1 to next_level_no_coins
+	set_coin_6_next_loop:
+	bge $t0, $s1, end_coin_6_next_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_6_next_loop
+	end_coin_6_next_loop:
+	jr $ra
 
 set_coin_6_exit:
-
+	la $t0, 0($s0)						# set $t0 to the BASE_ADDRESS
+	la $t1, exit_6_coins			# set $t1 to next_level_no_coins
+	set_coin_6_exit_loop:
+	bge $t0, $s1, end_coin_6_exit_loop
+	lw $t2, 0($t1)
+	sw $t2, 0($t0)
+	addi $t0, $t0, 4
+	addi $t1, $t1, 4
+	j set_coin_6_exit_loop
+	end_coin_6_exit_loop:
+	jr $ra
 	
