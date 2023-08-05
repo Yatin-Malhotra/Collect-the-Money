@@ -662,7 +662,7 @@ set_coin_0_exit:
 	sw $t2, 0($t0)
 	addi $t0, $t0, 4
 	addi $t1, $t1, 4
-	j exit_level_no_coins
+	j set_coin_0_exit_loop
 	exit_coin_0_exit_loop:
 	jr $ra
 
