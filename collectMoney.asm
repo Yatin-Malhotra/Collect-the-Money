@@ -98,10 +98,7 @@ main:
 	li $s1, MAX_ADDRESS
 	move $s4, $zero 		# $s4 is the Number of coins
 	
-	jal level_1_set			# Create the background
-	jal character			# Create the character
-	
-	j input_checker
+	j start_menu_enter
 
 level_1_set:
 	la $t0, 0($s0)			# set $t0 to the BASE_ADDRESS
@@ -900,7 +897,7 @@ input_detected_game_over:
     	beq $t9, 0x77, game_over		# if input is 'w', move up
     	beq $t9, 0x73, game_over_exit		# if input is 's', move down
 	beq $t9, 0x0A, do_task
-    	beq $t9, 0x70, main			# if input is 'p', restart the game
+    	beq $t9, 0x70, reset			# if input is 'p', restart the game
 
 	j input_checker_game_over
 	
