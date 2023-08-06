@@ -16,11 +16,11 @@
 #
 # Which approved features have been implemented for milestone 3?
 # (See the assignment handout for the list of additional features) 
-# 1. Health/Score (2 marks)
-# 2. Fail condition (1 mark)
-# 3. Win condition (1 mark)
-# 4. Different levels (2 marks)
-# 5. Start menu (1 mark)
+# 1. Health/Score (2 marks) [the # coins collected + if the user has the key or not]
+# 2. Fail condition (1 mark) [hitting the spike brings a game over screen]
+# 3. Win condition (1 mark) [completing each level brings a victory screen and on finshing the last level, a game completed screen]
+# 4. Different levels (2 marks) [3 different levels]
+# 5. Start menu (1 mark) [self-explanatory]
 #
 # Link to video demonstration for final submission:
 # - (insert YouTube / MyMedia / other URL here). Make sure we can view it! 
@@ -952,7 +952,7 @@ input_checker_start_screen:
     	beq $s6, 1, input_detected_start_screen  	# if any input, go to the input function
     	j input_checker_start_screen			# else go keep checking for any input
 
-input_detected_game_over:
+input_detected_start_screen:
 	lw $t9, 4($s7)
     	beq $t9, 0x77, start_menu_enter		# if input is 'w', move up
     	beq $t9, 0x73, start_menu_exit		# if input is 's', move down
