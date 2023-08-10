@@ -87,7 +87,7 @@ level_3:	.word
 # [2] = controlling_which_player (0 = main, 1 = clone)		8
 # [3] = has_a_clone_alive (0 = no, 1 = yes)				12
 # [4] = player_alive (0 = no, 1 = yes)				16
-game_data: .word	2, 0, 0, 0, 1
+game_data: .word	0, 0, 0, 0, 1
 
 .eqv BASE_ADDRESS 0x10008000
 .eqv MAX_ADDRESS 0x10018000
