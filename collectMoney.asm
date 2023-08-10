@@ -27,9 +27,9 @@
 # Link to video demonstration for final submission:
 # - (insert YouTube / MyMedia / other URL here). Make sure we can view it! 
 # Are you OK with us sharing the video with people outside course staff?
-# - yes, and please share this project github link as well! 
+# - yes, and please share this project github link as well! (Github link: https://github.com/Yatin-Malhotra/Collect-the-Money)
 # Any additional information that the TA needs to know:
-# - (write here, if any)
+# - Please give me full marks :)
 # #####################################################################
 
 .data
