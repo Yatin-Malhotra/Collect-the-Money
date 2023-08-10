@@ -25,7 +25,7 @@
 # 	and the player can switch back to the main player by pressing 3.] 
 #
 # Link to video demonstration for final submission:
-# - (insert YouTube / MyMedia / other URL here). Make sure we can view it! 
+# - https://www.youtube.com/watch?v=8LfGMVjCaYE 
 # Are you OK with us sharing the video with people outside course staff?
 # - yes, and please share this project github link as well! (Github link: https://github.com/Yatin-Malhotra/Collect-the-Money)
 # Any additional information that the TA needs to know:
